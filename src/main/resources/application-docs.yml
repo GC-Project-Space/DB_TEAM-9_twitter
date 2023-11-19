@@ -1,0 +1,5 @@
+# docs env
+spring:
+  config:
+    activate:
+      on-profile: "docs"
