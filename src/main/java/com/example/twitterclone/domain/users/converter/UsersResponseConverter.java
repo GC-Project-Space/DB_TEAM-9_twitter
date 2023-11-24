@@ -3,6 +3,11 @@ package com.example.twitterclone.domain.users.converter;
 import com.example.twitterclone.domain.users.domain.Users;
 import com.example.twitterclone.domain.users.dto.UsersResponse;
 
+/**
+ * UsersResponseConverter
+ *
+ * 유저 응답 entity 변환 클래스
+ */
 public class UsersResponseConverter {
 
     public static UsersResponse.SignUpUserDto toSignUpDto(Users user) {

@@ -1,6 +1,5 @@
 package com.example.twitterclone.domain.users.controller;
 
-import com.example.twitterclone.domain.users.converter.UsersConverter;
 import com.example.twitterclone.domain.users.converter.UsersResponseConverter;
 import com.example.twitterclone.domain.users.domain.Users;
 import com.example.twitterclone.domain.users.dto.UsersRequest;
@@ -23,6 +22,14 @@ public class UsersController {
 
     private final UsersService usersService;
 
+    /**
+     * 회원가입
+     *
+     * @method POST
+     * @url /users/sign-up
+     * @param request: UsersRequest.SignUpUserDto
+     * @return ApiResponse<UsersResponse.SignUpUserDto>
+     */
     @PostMapping("/sign-up")
     public ApiResponse<UsersResponse.SignUpUserDto> signUp (
             @RequestBody @Valid UsersRequest.SignUpUserDto request
@@ -31,6 +38,14 @@ public class UsersController {
         return ApiResponse.onSuccess(UsersResponseConverter.toSignUpDto(user));
     }
 
+    /**
+     * 로그인
+     *
+     * @method POST
+     * @url /users/sign-in
+     * @param request: UsersRequest.SignInUserDto
+     * @return ApiResponse<UsersResponse.SignInUserDto>
+     */
     @PostMapping("/sign-in")
     public ApiResponse<UsersResponse.SignInUserDto> signIn (
             @RequestBody @Valid UsersRequest.SignInUserDto request
@@ -39,6 +54,14 @@ public class UsersController {
         return ApiResponse.onSuccess(UsersResponseConverter.toSignInDto(user));
     }
 
+    /**
+     * 비밀번호 변경
+     *
+     * @method PUT
+     * @url /users/modify/password
+     * @param request: UsersRequest.ChangePasswordUserDto
+     * @return ApiResponse<UsersResponse.ChangePasswordUserDto>
+     */
     @PutMapping("/modify/password")
     public ApiResponse<UsersResponse.ChangePasswordUserDto> changePassword (
             @RequestBody @Valid UsersRequest.ChangePasswordUserDto request

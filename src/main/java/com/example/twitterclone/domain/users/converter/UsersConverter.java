@@ -4,6 +4,11 @@ import com.example.twitterclone.domain.users.domain.Users;
 import com.example.twitterclone.domain.users.dto.UsersRequest;
 import com.example.twitterclone.domain.users.domain.Gender;
 
+/**
+ * UsersConverter
+ *
+ * 유저 entity 변환 클래스
+ */
 public class UsersConverter {
 
     public static Users toUsers(UsersRequest.SignUpUserDto request) {

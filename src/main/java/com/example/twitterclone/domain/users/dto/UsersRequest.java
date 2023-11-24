@@ -9,7 +9,30 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
+/**
+ * UsersRequest
+ *
+ * 유저 요청 dto
+ */
 public class UsersRequest {
+
+    /**
+     * <Annotation 설명>
+     * @Valid 어노테이션에 의해 검증이 필요한 객체에 붙여준다.
+     *
+     * [Spring Annotation] <- Spring에서 제공하는 Annotation
+     * @Email : 이메일 형식이 올바른지 확인
+     * @NotNull : null 값이 아닌지 확인
+     *
+     * [Custom Annotation] <- 직접 만든 Annotation
+     * @EmailNotExist : 이메일이 존재 유무 확인 (존재하지 않아야 함)
+     * @EmailExist : 이메일이 존재 유무 확인 (존재해야 함)
+     * @PasswordValid : 비밀번호 형식이 올바른지 확인
+     * @NickNameValid : 닉네임 형식이 올바른지 확인
+     * @NickNameExist : 닉네임이 존재 유무 확인 (존재해야 함)
+     * @PhoneValid : 전화번호 형식이 올바른지 확인
+     * @BrithValid : 생년월일 형식이 올바른지 확인
+     */
 
     @Getter
     @Builder

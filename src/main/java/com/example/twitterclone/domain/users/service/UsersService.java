@@ -23,18 +23,36 @@ public class UsersService {
 
     private final PasswordUtil passwordUtil;
 
+    /**
+     * 회원가입
+     *
+     * @param request: UsersRequest.SignUpUserDto
+     * @return Users
+     */
     @Transactional
     public Users signUp(UsersRequest.SignUpUserDto request) {
         Users user = UsersConverter.toUsers(request);
         return usersWriteRepository.save(user);
     }
 
+    /**
+     * 로그인
+     *
+     * @param request: UsersRequest.SignInUserDto
+     * @return Users
+     */
     @Transactional(readOnly = true)
     public Users signIn(UsersRequest.SignInUserDto request) {
         Users user = usersReadRepository.findByEmail(request.getEmail());
         return user;
     }
 
+    /**
+     * 비밀번호 변경
+     *
+     * @param request: UsersRequest.ChangePasswordUserDto
+     * @return Users
+     */
     @Transactional
     public Users changePassword(UsersRequest.ChangePasswordUserDto request) {
         Users user = usersReadRepository.findByEmail(request.getEmail());
