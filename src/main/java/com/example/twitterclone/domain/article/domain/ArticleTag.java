@@ -13,21 +13,19 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "ARTICLE")
-public class Article extends BaseEntity {
+@Entity(name = "ARTICLE_TAG")
+public class ArticleTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "content", nullable = false, length = 1000)
-    private String content;
-
-    @JoinColumn(name = "writer_id", nullable = false)
+    @JoinColumn(name = "article_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
-    private Users writer;
+    private Article article;
 
-    @Column(name = "status", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    @JoinColumn(name = "target_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Users target;
+
 }
