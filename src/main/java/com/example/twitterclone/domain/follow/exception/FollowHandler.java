@@ -1,11 +1,11 @@
 package com.example.twitterclone.domain.follow.exception;
 
-import com.example.twitterclone.global.error.exception.ErrorCode;
-import com.example.twitterclone.global.error.exception.GeneralException;
+import com.example.twitterclone.global.common.code.status.ErrorStatus;
+import com.example.twitterclone.global.common.exception.GeneralException;
 
 public class FollowHandler extends GeneralException {
 
-    public FollowHandler(ErrorCode errorCode) {
-        super(errorCode);
+    public FollowHandler(ErrorStatus errorStatus) {
+        super(errorStatus);
     }
 }

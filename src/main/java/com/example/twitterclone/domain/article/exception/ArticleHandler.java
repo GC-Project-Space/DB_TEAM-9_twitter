@@ -1,11 +1,11 @@
 package com.example.twitterclone.domain.article.exception;
 
-import com.example.twitterclone.global.error.exception.ErrorCode;
-import com.example.twitterclone.global.error.exception.GeneralException;
+import com.example.twitterclone.global.common.code.status.ErrorStatus;
+import com.example.twitterclone.global.common.exception.GeneralException;
 
 public class ArticleHandler extends GeneralException {
 
-    public ArticleHandler(ErrorCode errorCode) {
-        super(errorCode);
+    public ArticleHandler(ErrorStatus errorStatus) {
+        super(errorStatus);
     }
 }

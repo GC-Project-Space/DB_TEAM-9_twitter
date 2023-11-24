@@ -5,7 +5,7 @@ import com.example.twitterclone.domain.example.domain.Example;
 import com.example.twitterclone.domain.example.dto.ExampleRequest;
 import com.example.twitterclone.domain.example.dto.ExampleResponse;
 import com.example.twitterclone.domain.example.service.ExampleService;
-import com.example.twitterclone.global.common.response.ResponseDto;
+import com.example.twitterclone.global.common.response.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -25,8 +25,8 @@ public class ExampleController {
 
     @Operation(summary = "Link Test API", description = "서버 연결 테스트용 API")
     @GetMapping("/test")
-    public ResponseDto<String> test() {
-        return ResponseDto.onSuccess("Server is running");
+    public ApiResponse<String> test() {
+        return ApiResponse.onSuccess("Server is running");
     }
 
     @Operation(summary = "Example Create API", description = "예시 생성 API")
@@ -34,10 +34,10 @@ public class ExampleController {
             @Parameter(name = "massage", description = "예시 메시지", required = true)
     })
     @PostMapping("/create")
-    public ResponseDto<ExampleResponse.ExampleCreateDto> create(
+    public ApiResponse<ExampleResponse.ExampleCreateDto> create(
             @RequestBody ExampleRequest.ExampleCreateDto exampleCreateDto
     ) {
         Example example = exampleService.exampleCreate(exampleCreateDto);
-        return ResponseDto.onSuccess(ExampleConverter.toExampleResponse(example.getMassage()));
+        return ApiResponse.onSuccess(ExampleConverter.toExampleResponse(example.getMassage()));
     }
 }
