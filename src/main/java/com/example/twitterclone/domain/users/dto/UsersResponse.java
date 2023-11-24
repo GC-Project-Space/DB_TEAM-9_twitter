@@ -10,4 +10,11 @@ public class UsersResponse {
     public static class SignUpUserDto {
         String message;
     }
+
+    @Getter
+    @Builder
+    public static class SignInUserDto {
+        Long userId;
+        String message;
+    }
 }

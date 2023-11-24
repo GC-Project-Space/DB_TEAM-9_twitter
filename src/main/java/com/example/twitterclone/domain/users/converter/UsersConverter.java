@@ -25,9 +25,4 @@ public class UsersConverter {
 
     }
 
-    public static UsersResponse.SignUpUserDto toSignUpDto(Users user) {
-        return UsersResponse.SignUpUserDto.builder()
-                .message(user.getNickname() + "님 회원가입을 축하드립니다.")
-                .build();
-    }
 }

@@ -18,7 +18,7 @@ public class UsersRequest {
     public static class SignUpUserDto {
 
         @Email(message = "이메일 형식이 올바르지 않습니다.")
-        @EmailExist
+        @EmailNotExist
         @NotNull(message = "이메일을 입력해주세요.")
         private String email;
 
@@ -44,6 +44,22 @@ public class UsersRequest {
         private String brith;
 
         private String profileImage;
+    }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class SignInUserDto {
+
+        @Email(message = "이메일 형식이 올바르지 않습니다.")
+        @EmailExist
+        @NotNull(message = "이메일을 입력해주세요.")
+        private String email;
+
+        @PasswordValid
+        @NotNull(message = "비밀번호를 입력해주세요.")
+        private String password;
     }
 
 }

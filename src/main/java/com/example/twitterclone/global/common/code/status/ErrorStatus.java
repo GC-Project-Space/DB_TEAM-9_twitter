@@ -45,6 +45,8 @@ public enum ErrorStatus implements BaseErrorCode {
     NICKNAME_ALREADY_EXISTS(HttpStatus.CONFLICT, "USER_409_001", "이미 존재하는 닉네임입니다."),
     EMAIL_ALREADY_EXISTS(HttpStatus.CONFLICT, "USER_409_002", "이미 존재하는 이메일입니다."),
 
+    EMAIL_NOT_EXISTS(HttpStatus.NOT_FOUND, "USER_404_001", "존재하지 않는 이메일입니다."),
+
     ;
 
     private final HttpStatus httpStatus;
