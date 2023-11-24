@@ -62,4 +62,23 @@ public class UsersRequest {
         private String password;
     }
 
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class ChangePasswordUserDto {
+
+        @Email(message = "이메일 형식이 올바르지 않습니다.")
+        @EmailExist
+        @NotNull(message = "이메일을 입력해주세요.")
+        private String email;
+
+        @PasswordValid
+        @NotNull(message = "비밀번호를 입력해주세요.")
+        private String password;
+
+        @PasswordValid
+        @NotNull(message = "비밀번호를 입력해주세요.")
+        private String newPassword;
+    }
 }

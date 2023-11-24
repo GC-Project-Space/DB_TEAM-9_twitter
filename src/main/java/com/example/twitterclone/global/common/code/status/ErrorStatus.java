@@ -41,6 +41,7 @@ public enum ErrorStatus implements BaseErrorCode {
     NICKNAME_NOT_VALID(HttpStatus.BAD_REQUEST, "USER_400_002", "닉네임은 특수문자 없이 1 ~ 10 글자로 설정 해주세요."),
     PHONE_NUMBER_NOT_VALID(HttpStatus.BAD_REQUEST, "USER_400_003", "전화번호는 000-0000-0000의 형태로 입력해주세요."),
     BRITH_NOT_VALID(HttpStatus.BAD_REQUEST, "USER_400_004", "생년월일은 0000-00-00의 형태로 입력해주세요."),
+    PASSWORD_CANNOT_BE_CHANGED(HttpStatus.BAD_REQUEST, "USER_400_005", "현재 비밀번호와 동일한 비밀번호로의 변경은 불가합니다."),
 
     NICKNAME_ALREADY_EXISTS(HttpStatus.CONFLICT, "USER_409_001", "이미 존재하는 닉네임입니다."),
     EMAIL_ALREADY_EXISTS(HttpStatus.CONFLICT, "USER_409_002", "이미 존재하는 이메일입니다."),

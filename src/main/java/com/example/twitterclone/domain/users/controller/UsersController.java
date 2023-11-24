@@ -38,4 +38,12 @@ public class UsersController {
         Users user = usersService.signIn(request);
         return ApiResponse.onSuccess(UsersResponseConverter.toSignInDto(user));
     }
+
+    @PutMapping("/modify/password")
+    public ApiResponse<UsersResponse.ChangePasswordUserDto> changePassword (
+            @RequestBody @Valid UsersRequest.ChangePasswordUserDto request
+    ) {
+        Users user = usersService.changePassword(request);
+        return ApiResponse.onSuccess(UsersResponseConverter.toChangePasswordDto(user));
+    }
 }

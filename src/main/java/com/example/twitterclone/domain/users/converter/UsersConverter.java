@@ -2,8 +2,7 @@ package com.example.twitterclone.domain.users.converter;
 
 import com.example.twitterclone.domain.users.domain.Users;
 import com.example.twitterclone.domain.users.dto.UsersRequest;
-import com.example.twitterclone.domain.users.dto.UsersResponse;
-import com.example.twitterclone.domain.users.util.Gender;
+import com.example.twitterclone.domain.users.domain.Gender;
 
 public class UsersConverter {
 

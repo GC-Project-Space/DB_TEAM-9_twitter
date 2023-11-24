@@ -1,6 +1,5 @@
 package com.example.twitterclone.domain.users.domain;
 
-import com.example.twitterclone.domain.users.util.Gender;
 import com.example.twitterclone.global.common.entity.BaseEntity;
 import com.example.twitterclone.global.constant.Status;
 import lombok.*;
@@ -9,7 +8,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 
 @Slf4j
 @Getter
@@ -54,4 +52,8 @@ public class Users extends BaseEntity {
             columnDefinition = "enum ('ACTIVE', 'INACTIVE', 'DELETED') default 'ACTIVE'")
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    public void changePassword(String newPassword) {
+        this.password = newPassword;
+    }
 }

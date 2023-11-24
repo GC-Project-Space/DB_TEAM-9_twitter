@@ -17,4 +17,10 @@ public class UsersResponse {
         Long userId;
         String message;
     }
+
+    @Getter
+    @Builder
+    public static class ChangePasswordUserDto {
+        String message;
+    }
 }

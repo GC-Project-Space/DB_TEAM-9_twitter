@@ -1,4 +1,4 @@
-package com.example.twitterclone.domain.users.util;
+package com.example.twitterclone.domain.users.domain;
 
 import java.util.stream.Stream;
 
