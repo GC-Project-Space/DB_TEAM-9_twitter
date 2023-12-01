@@ -15,7 +15,7 @@ public class UsersResponse {
     @Builder
     public static class SignInUserDto {
         Long userId;
-        String message;
+        String messgage;
     }
 
     @Getter
