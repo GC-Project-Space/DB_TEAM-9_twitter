@@ -7,6 +7,8 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Getter
@@ -30,4 +32,10 @@ public class Article extends BaseEntity {
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private List<ArticleImage> articleImages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private List<ArticleTag> articleTags = new ArrayList<>();
 }
