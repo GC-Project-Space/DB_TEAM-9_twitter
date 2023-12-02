@@ -6,6 +6,7 @@ import com.example.twitterclone.domain.article.dto.ArticleRequest;
 import com.example.twitterclone.domain.article.dto.ArticleResponse;
 import com.example.twitterclone.domain.article.service.ArticleService;
 import com.example.twitterclone.global.common.response.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,7 @@ public class ArticleController {
      * @param request: UsersRequest.SignUpUserDto
      * @return ApiResponse<UsersResponse.SignUpUserDto>
      */
-
+    @Operation(summary = "아티클 생성", description = "아티클 생성 API")
     @PostMapping("/create")
     public ApiResponse<ArticleResponse.CreateDto> create(
             @RequestBody @Valid ArticleRequest.CreateDto request
@@ -48,6 +49,7 @@ public class ArticleController {
      * @url /articles/get-all
      * @return ApiResponse<List<ArticleResponse.GetArticleDto>>
      */
+    @Operation(summary = "모든 아티클 조회", description = "모든 아티클 조회 API")
     @GetMapping("/get-all")
     public ApiResponse<List<ArticleResponse.GetArticleDto>> getAll() {
         List<Article> articles = articleService.getAll();
@@ -62,6 +64,7 @@ public class ArticleController {
      * @param userId: Long
      * @return ApiResponse<List<ArticleResponse.GetArticleDto>>
      */
+    @Operation(summary = "팔로잉 중인 유저의 아티클 조회", description = "팔로잉 중인 유저의 아티클 조회 API")
     @GetMapping("/get-following/{userId}")
     public ApiResponse<List<ArticleResponse.GetArticleDto>> getFollowing(
             @PathVariable("userId") Long userId
@@ -78,6 +81,7 @@ public class ArticleController {
      * @param userId: Long
      * @return ApiResponse<List<ArticleResponse.GetArticleDto>>
      */
+    @Operation(summary = "유저의 아티클 조회", description = "유저의 아티클 조회 API")
     @GetMapping("/get-article/{userId}")
     public ApiResponse<List<ArticleResponse.GetArticleDto>> getUserArticles(
             @PathVariable("userId") Long userId
