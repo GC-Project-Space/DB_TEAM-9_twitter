@@ -33,4 +33,14 @@ public class FollowResponse {
         private int followingCount;
     }
 
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class FollowDto {
+        private Long id;
+        private String name;
+        private String nickname;
+        private String profileImage;
+    }
 }

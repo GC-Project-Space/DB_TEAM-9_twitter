@@ -3,7 +3,9 @@ package com.example.twitterclone.domain.follow.converter;
 import com.example.twitterclone.domain.follow.domain.Follow;
 import com.example.twitterclone.domain.follow.dto.FollowResponse;
 import com.example.twitterclone.domain.users.domain.Users;
-import com.example.twitterclone.domain.users.dto.UsersResponse;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FollowConverter {
 
@@ -34,5 +36,15 @@ public class FollowConverter {
                 .build();
     }
 
+    public static List<FollowResponse.FollowDto> toFollowDtoList(List<Follow> followers) {
+        return followers.stream()
+                .map(follower -> FollowResponse.FollowDto.builder()
+                        .id(follower.getFrom_user().getId())
+                        .name(follower.getFrom_user().getName())
+                        .nickname(follower.getFrom_user().getNickname())
+                        .profileImage(follower.getFrom_user().getProfileImage())
+                        .build())
+                .collect(Collectors.toList());
+    }
 }
 

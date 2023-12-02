@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name = "Follows", description = "Follow API")
 @Slf4j
 @RequiredArgsConstructor
@@ -72,5 +74,38 @@ public class FollowController {
         return ApiResponse.onSuccess(followService.followCount(email));
     }
 
+    /**
+     * 팔로워 리스트
+     *
+     * @method GET
+     * @url /follows/follower-list
+     * @param email: String
+     * @return ApiResponse<List<FollowResponse.FollowDto>>
+     */
+    @Operation(summary = "팔로워 리스트", description = "팔로워 리스트 API")
+    @GetMapping("/follower-list")
+    public ApiResponse<List<FollowResponse.FollowDto>> followerList(
+            @RequestParam(name = "email") String email
+    ) {
+        List<Follow> followers = followService.followerList(email);
+        return ApiResponse.onSuccess(FollowConverter.toFollowDtoList(followers));
+    }
+
+    /**
+     * 팔로잉 리스트
+     *
+     * @method GET
+     * @url /follows/following-list
+     * @param email: String
+     * @return ApiResponse<List<FollowResponse.FollowDto>>
+     */
+    @Operation(summary = "팔로잉 리스트", description = "팔로잉 리스트 API")
+    @GetMapping("/following-list")
+    public ApiResponse<List<FollowResponse.FollowDto>> followingList(
+            @RequestParam(name = "email") String email
+    ) {
+        List<Follow> followings = followService.followingList(email);
+        return ApiResponse.onSuccess(FollowConverter.toFollowDtoList(followings));
+    }
 
 }

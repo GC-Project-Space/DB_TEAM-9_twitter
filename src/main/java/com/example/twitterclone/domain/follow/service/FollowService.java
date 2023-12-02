@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -48,7 +50,7 @@ public class FollowService {
         followRepository.delete(follow);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public FollowResponse.CountRes followCount(String email) {
         int followingCount = followRepository.followingCountByEmail(email);
         int followerCount = followRepository.followerCountByEmail(email);
@@ -57,5 +59,15 @@ public class FollowService {
                 .followingCount(followingCount)
                 .followerCount(followerCount)
                 .build();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Follow> followerList(String email) {
+        return followRepository.findAllByEmailWhereFollower(email);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Follow> followingList(String email) {
+        return followRepository.findAllByEmailWhereFollowing(email);
     }
 }
