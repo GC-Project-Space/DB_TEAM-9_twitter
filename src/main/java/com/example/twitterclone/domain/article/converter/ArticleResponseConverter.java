@@ -24,6 +24,8 @@ public class ArticleResponseConverter {
                         .article_id(article.getId())
                         .content(article.getContent())
                         .writer(toWriterDto(article.getWriter()))
+                        .likeCount(article.getArticleLikes().size())
+                        .commentCount(article.getComments().size())
                         .images(toImageDto(article.getArticleImages()))
                         .userTags(toUserDto(article.getArticleTags()))
                         .build())

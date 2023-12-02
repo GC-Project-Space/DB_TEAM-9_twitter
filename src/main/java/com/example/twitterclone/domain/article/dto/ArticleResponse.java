@@ -29,6 +29,8 @@ public class ArticleResponse {
         private UserDto writer;
         private LocalDateTime createdAt;
 
+        private Integer likeCount;
+        private Integer commentCount;
         private List<ImageDto> images;
         private List<UserDto> userTags;
     }
