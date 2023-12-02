@@ -4,7 +4,6 @@ import com.example.twitterclone.domain.article.converter.ArticleConverter;
 import com.example.twitterclone.domain.article.domain.Article;
 import com.example.twitterclone.domain.article.dto.ArticleRequest;
 import com.example.twitterclone.domain.article.repository.ArticleReadRepository;
-import com.example.twitterclone.domain.article.repository.ArticleTagWriteRepository;
 import com.example.twitterclone.domain.article.repository.ArticleWriteRepository;
 import com.example.twitterclone.domain.users.domain.Users;
 import com.example.twitterclone.domain.users.service.UsersService;
@@ -68,6 +67,6 @@ public class ArticleService {
      * @return List<Article>
      */
     public List<Article> getFollowing(Long userId) {
-        return articleReadRepository.findAllFollowingArticleByStatusOrderByCreatedAtDesc(userId);
+        return articleReadRepository.getFollowUsersArticleList(userId);
     }
 }

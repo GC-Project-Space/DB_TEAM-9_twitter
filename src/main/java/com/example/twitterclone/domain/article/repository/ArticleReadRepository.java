@@ -14,13 +14,14 @@ public interface ArticleReadRepository extends JpaRepository<Article, Long> {
             "order by a.createdAt desc")
     List<Article> findAllByStatusOrderByCreatedAtDesc();
 
-    @Query("select a " +
+    @Query(value = "select a " +
             "from ARTICLE a " +
             "where a.status = 'ACTIVE' and " +
             "      a.writer = exists (" +
             "       select f.to_user " +
             "       from FOLLOW f " +
             "       where f.from_user = :userId)" +
-            "order by a.createdAt desc")
-    List<Article> findAllFollowingArticleByStatusOrderByCreatedAtDesc(Long userId);
+            "order by a.createdAt desc",
+            nativeQuery = true)
+    List<Article> getFollowUsersArticleList(Long userId);
 }

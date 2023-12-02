@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Slf4j
 @Getter
@@ -25,6 +26,9 @@ public class Users extends BaseEntity {
 
     @Column(name = "email", nullable = false, length = 100)
     private String email;
+
+    @Column(name = "email_verified")
+    private LocalDateTime emailVerified;
 
     @Column(name = "password", nullable = false, length = 100)
     private String password;
@@ -47,6 +51,12 @@ public class Users extends BaseEntity {
 
     @Column(name = "profile_image", length = 100)
     private String profileImage;
+
+    @Column(name = "cover_image", length = 100)
+    private String coverImage;
+
+    @Column(name = "bio", length = 100)
+    private String bio; // 자기소개
 
     @Column(name = "status", nullable = false,
             columnDefinition = "enum ('ACTIVE', 'INACTIVE', 'DELETED') default 'ACTIVE'")

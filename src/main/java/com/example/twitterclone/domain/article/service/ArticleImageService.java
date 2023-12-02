@@ -4,7 +4,6 @@ import com.example.twitterclone.domain.article.converter.ArticleImageConverter;
 import com.example.twitterclone.domain.article.domain.Article;
 import com.example.twitterclone.domain.article.domain.ArticleImage;
 import com.example.twitterclone.domain.article.dto.ArticleRequest;
-import com.example.twitterclone.domain.article.repository.ArticleImageWriteRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
