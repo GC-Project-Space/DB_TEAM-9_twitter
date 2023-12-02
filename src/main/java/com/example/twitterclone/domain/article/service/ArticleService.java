@@ -69,4 +69,15 @@ public class ArticleService {
     public List<Article> getFollowing(Long userId) {
         return articleReadRepository.getFollowUsersArticleList(userId);
     }
+
+    /**
+     * getArticle
+     *
+     * @param articleId: Long
+     * @return Article
+     */
+    @Transactional(readOnly = true)
+    public Article getArticle(Long articleId) {
+        return articleReadRepository.findById(articleId).orElseThrow();
+    }
 }
