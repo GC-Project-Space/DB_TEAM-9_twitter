@@ -71,4 +71,15 @@ public class UsersService {
     public Users getUsers(String nickname) {
         return usersReadRepository.findByNickname(nickname);
     }
+
+    /**
+     * 회원정보 조회
+     *
+     * @param userId: Long
+     * @return Users
+     */
+    @Transactional(readOnly = true)
+    public Users getUsers(Long userId) {
+        return usersReadRepository.findById(userId).orElseThrow();
+    }
 }
