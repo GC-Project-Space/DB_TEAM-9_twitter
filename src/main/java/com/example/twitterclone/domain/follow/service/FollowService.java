@@ -47,4 +47,15 @@ public class FollowService {
         // 언팔로우에 성공했다면, 언팔로우 결과를 FollowResponse에 담아 반환
         followRepository.delete(follow);
     }
+
+    @Transactional
+    public FollowResponse.CountRes followCount(String email) {
+        int followingCount = followRepository.followingCountByEmail(email);
+        int followerCount = followRepository.followerCountByEmail(email);
+
+        return FollowResponse.CountRes.builder()
+                .followingCount(followingCount)
+                .followerCount(followerCount)
+                .build();
+    }
 }

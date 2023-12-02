@@ -12,19 +12,12 @@ import com.example.twitterclone.domain.users.domain.Gender;
 public class UsersConverter {
 
     public static Users toUsers(UsersRequest.SignUpUserDto request) {
-        Gender gender = Gender.fromString(request.getGender());
-
-        String profileImage = request.getProfileImage().isBlank() ? "default.png" : request.getProfileImage();
 
         return Users.builder()
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(request.getPassword())
-                .brith(request.getBrith())
                 .nickname(request.getNickname())
-                .phone(request.getPhone())
-                .gender(gender)
-                .profileImage(profileImage)
                 .build();
 
     }

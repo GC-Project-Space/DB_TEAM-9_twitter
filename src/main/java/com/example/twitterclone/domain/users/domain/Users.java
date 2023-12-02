@@ -39,7 +39,7 @@ public class Users extends BaseEntity {
     @Column(name = "nickname", nullable = false, length = 100)
     private String nickname;
 
-    @Column(name = "phone", nullable = false, length = 100)
+    @Column(name = "phone", length = 100)
     private String phone;
 
     @Column(name = "gender")

@@ -24,4 +24,13 @@ public class FollowResponse {
         private String message;
     }
 
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class CountRes {
+        private int followerCount;
+        private int followingCount;
+    }
+
 }

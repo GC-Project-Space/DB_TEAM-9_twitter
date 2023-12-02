@@ -56,17 +56,6 @@ public class UsersRequest {
         @NickNameExist
         @NotNull(message = "닉네임을 입력해주세요.")
         private String nickname;
-
-        @PhoneValid
-        @NotNull(message = "전화번호를 입력해주세요.")
-        private String phone;
-
-        private String gender;
-
-        @BrithValid
-        private String brith;
-
-        private String profileImage;
     }
 
     @Getter
