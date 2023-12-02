@@ -1,9 +1,10 @@
 package com.example.twitterclone.domain.article.controller;
 
+import com.example.twitterclone.domain.article.converter.ArticleResponseConverter;
+import com.example.twitterclone.domain.article.domain.Article;
+import com.example.twitterclone.domain.article.dto.ArticleRequest;
+import com.example.twitterclone.domain.article.dto.ArticleResponse;
 import com.example.twitterclone.domain.article.service.ArticleService;
-import com.example.twitterclone.domain.users.converter.UsersResponseConverter;
-import com.example.twitterclone.domain.users.dto.UsersRequest;
-import com.example.twitterclone.domain.users.dto.UsersResponse;
 import com.example.twitterclone.global.common.response.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Tag(name = "Article", description = "Article API")
 @Slf4j
@@ -30,58 +32,41 @@ public class ArticleController {
      * @param request: UsersRequest.SignUpUserDto
      * @return ApiResponse<UsersResponse.SignUpUserDto>
      */
-    @PostMapping
-    public ApiResponse<ArticleResponse.createDto> create(
-            @RequestBody @Valid ArticleRequest.createDto request
+    @PostMapping("/create")
+    public ApiResponse<ArticleResponse.CreateDto> create(
+            @RequestBody @Valid ArticleRequest.CreateDto request
     ) {
         Article article = articleService.create(request);
-        return ApiResponse.onSuccess(ArticleResponseConverter.tocreateDto(article));
+        return ApiResponse.onSuccess(ArticleResponseConverter.toCreateDto(article));
     }
 
     /**
-     * create
+     * getAll
      *
-     * @method POST
-     * @url /articles/create
-     * @param request: UsersRequest.SignUpUserDto
-     * @return ApiResponse<UsersResponse.SignUpUserDto>
+     * @method GET
+     * @url /articles/get-all
+     * @return ApiResponse<List<ArticleResponse.GetArticleDto>>
      */
-    @GetMapping("/{id}")
-    public ApiResponse<ArticleResponse.getarticlebyidDto> getarticlebyid(
-            @RequestBody @Valid ArticleRequest.getarticlebyidDto request
-    ) {
-        Article article = articleService.getarticlebyid(request);
-        return ApiResponse.onSuccess(ArticleResponseConverter.getarticlebyidDto(article));
+    @GetMapping("/get-all")
+    public ApiResponse<List<ArticleResponse.GetArticleDto>> getAll() {
+        List<Article> articles = articleService.getAll();
+        return ApiResponse.onSuccess(ArticleResponseConverter.toGetArticleDto(articles));
     }
+
     /**
-     * create
+     * getFollowing
      *
-     * @method POST
-     * @url /articles/create
-     * @param request: UsersRequest.SignUpUserDto
-     * @return ApiResponse<UsersResponse.SignUpUserDto>
+     * @method GET
+     * @url /articles/get-following/{userId}
+     * @param userId: Long
+     * @return ApiResponse<List<ArticleResponse.GetArticleDto>>
      */
-    @PutMapping("/{id}")
-    public ApiResponse<ArticleResponse.updatearticlebyidDto> updatearticlebyid(
-            @RequestBody @Valid ArticleRequest.updatearticlebyidDto request
+    @GetMapping("/get-following/{userId}")
+    public ApiResponse<List<ArticleResponse.GetArticleDto>> getFollowing(
+            @PathVariable("userId") Long userId
     ) {
-        Article article = articleService.updatearticlebyid(request);
-        return ApiResponse.onSuccess(ArticleResponseConverter.updatearticlebyidDto(article));
-    }
-    /**
-     * create
-     *
-     * @method POST
-     * @url /articles/create
-     * @param request: UsersRequest.SignUpUserDto
-     * @return ApiResponse<UsersResponse.SignUpUserDto>
-     */
-    @DeleteMapping("/{id}")
-    public ApiResponse<ArticleResponse.deletearticlebyidDto> deletearticlebyid(
-            @RequestBody @Valid ArticleRequest.deletearticlebyidDto request
-    ) {
-        Article article = articleService.deletearticlebyid(request);
-        return ApiResponse.onSuccess(ArticleResponseConverter.deletearticlebyidDto(article));
+        List<Article> articles = articleService.getFollowing(userId);
+        return ApiResponse.onSuccess(ArticleResponseConverter.toGetArticleDto(articles));
     }
 
 }

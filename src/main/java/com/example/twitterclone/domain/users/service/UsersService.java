@@ -60,4 +60,15 @@ public class UsersService {
         user.changePassword(request.getNewPassword());
         return usersWriteRepository.save(user);
     }
+
+    /**
+     * 회원정보 조회
+     *
+     * @param nickname: String
+     * @return Users
+     */
+    @Transactional(readOnly = true)
+    public Users getUsers(String nickname) {
+        return usersReadRepository.findByNickname(nickname);
+    }
 }
