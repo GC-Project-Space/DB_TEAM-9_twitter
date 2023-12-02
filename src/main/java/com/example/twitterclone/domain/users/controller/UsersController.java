@@ -6,6 +6,7 @@ import com.example.twitterclone.domain.users.dto.UsersRequest;
 import com.example.twitterclone.domain.users.dto.UsersResponse;
 import com.example.twitterclone.domain.users.service.UsersService;
 import com.example.twitterclone.global.common.response.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,7 @@ public class UsersController {
      * @param request: UsersRequest.SignUpUserDto
      * @return ApiResponse<UsersResponse.SignUpUserDto>
      */
+    @Operation(summary = "회원가입", description = "회원가입 API")
     @PostMapping("/sign-up")
     public ApiResponse<UsersResponse.SignUpUserDto> signUp (
             @RequestBody @Valid UsersRequest.SignUpUserDto request
@@ -46,6 +48,7 @@ public class UsersController {
      * @param request: UsersRequest.SignInUserDto
      * @return ApiResponse<UsersResponse.SignInUserDto>
      */
+    @Operation(summary = "로그인", description = "로그인 API")
     @PostMapping("/sign-in")
     public ApiResponse<UsersResponse.SignInUserDto> signIn (
             @RequestBody @Valid UsersRequest.SignInUserDto request
@@ -62,6 +65,7 @@ public class UsersController {
      * @param request: UsersRequest.ChangePasswordUserDto
      * @return ApiResponse<UsersResponse.ChangePasswordUserDto>
      */
+    @Operation(summary = "비밀번호 변경", description = "비밀번호 변경 API")
     @PutMapping("/modify/password")
     public ApiResponse<UsersResponse.ChangePasswordUserDto> changePassword (
             @RequestBody @Valid UsersRequest.ChangePasswordUserDto request

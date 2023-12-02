@@ -6,6 +6,7 @@ import com.example.twitterclone.domain.users.dto.AuthResponse;
 import com.example.twitterclone.domain.users.service.AuthService;
 import com.example.twitterclone.domain.users.validation.annotation.EmailExist;
 import com.example.twitterclone.global.common.response.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,15 @@ public class AuthController {
 
     private final AuthService authService;
 
+    /**
+     * 이메일 중복 체크
+     *
+     * @method GET
+     * @url /auth/email-check
+     * @param email: String
+     * @return ApiResponse<Boolean>
+     */
+    @Operation(summary = "이메일 중복 체크", description = "이메일 중복 체크 API")
     @GetMapping("/user-info")
     public ApiResponse<AuthResponse.GetUserInfoDto> getUserInfo(
             @RequestParam(name = "email") @Email @EmailExist String email
