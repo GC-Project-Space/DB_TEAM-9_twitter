@@ -70,4 +70,20 @@ public class ArticleController {
         return ApiResponse.onSuccess(ArticleResponseConverter.toGetArticleDto(articles));
     }
 
+    /**
+     * getUserArticles
+     *
+     * @method GET
+     * @url /articles/get-article/{userId}
+     * @param userId: Long
+     * @return ApiResponse<List<ArticleResponse.GetArticleDto>>
+     */
+    @GetMapping("/get-article/{userId}")
+    public ApiResponse<List<ArticleResponse.GetArticleDto>> getUserArticles(
+            @PathVariable("userId") Long userId
+    ) {
+        List<Article> articles = articleService.getUserArticles(userId);
+        return ApiResponse.onSuccess(ArticleResponseConverter.toGetArticleDto(articles));
+    }
+
 }

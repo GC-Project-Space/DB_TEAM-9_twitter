@@ -80,4 +80,15 @@ public class ArticleService {
     public Article getArticle(Long articleId) {
         return articleReadRepository.findById(articleId).orElseThrow();
     }
+
+    /**
+     * getUserArticles
+     *
+     * @param userId: Long
+     * @return List<Article>
+     */
+    @Transactional(readOnly = true)
+    public List<Article> getUserArticles(Long userId) {
+        return articleReadRepository.findAllByWriterId(userId);
+    }
 }

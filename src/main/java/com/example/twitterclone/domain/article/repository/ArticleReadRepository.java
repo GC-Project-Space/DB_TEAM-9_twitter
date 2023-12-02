@@ -24,4 +24,6 @@ public interface ArticleReadRepository extends JpaRepository<Article, Long> {
             "order by a.createdAt desc",
             nativeQuery = true)
     List<Article> getFollowUsersArticleList(Long userId);
+
+    List<Article> findAllByWriterId(Long userId);
 }
