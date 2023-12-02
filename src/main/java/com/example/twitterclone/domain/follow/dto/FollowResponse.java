@@ -1,34 +1,27 @@
 package com.example.twitterclone.domain.follow.dto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 public class FollowResponse {
 
-    private String status;
-    private String message;
-
-    // 생성자, 게터, 세터 등을 추가할 수 있습니다.
-
-    public FollowResponse() {
-        // 기본 생성자
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class FollowRes {
+        private String status;
+        private String message;
     }
 
-    public FollowResponse(String status, String message) {
-        this.status = status;
-        this.message = message;
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UnFollowRes {
+        private String status;
+        private String message;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
