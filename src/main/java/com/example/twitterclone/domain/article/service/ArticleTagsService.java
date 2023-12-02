@@ -26,7 +26,7 @@ public class ArticleTagsService {
         Stream.iterate(0, i -> i + 1)
                 .limit(userTags.size())
                 .forEach(i -> {
-                    Users target = usersService.getUsers(userTags.get(i));
+                    Users target = usersService.getUsersByNickname(userTags.get(i));
                     ArticleTag articleTag = ArticleTagConverter.toArticleTag(article, target);
                     article.getArticleTags().add(articleTag);
                 });

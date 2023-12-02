@@ -68,7 +68,7 @@ public class UsersService {
      * @return Users
      */
     @Transactional(readOnly = true)
-    public Users getUsers(String nickname) {
+    public Users getUsersByNickname(String nickname) {
         return usersReadRepository.findByNickname(nickname);
     }
 
@@ -79,7 +79,18 @@ public class UsersService {
      * @return Users
      */
     @Transactional(readOnly = true)
-    public Users getUsers(Long userId) {
+    public Users getUsersById(Long userId) {
         return usersReadRepository.findById(userId).orElseThrow();
+    }
+
+    /**
+     * 회원정보 조회
+     *
+     * @param email: String
+     * @return Users
+     */
+    @Transactional(readOnly = true)
+    public Users getUsersByEmail(String email) {
+        return usersReadRepository.findByEmail(email);
     }
 }

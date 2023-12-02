@@ -38,7 +38,7 @@ public class ArticleService {
      */
     @Transactional
     public Article create(ArticleRequest.CreateDto request) {
-        Users writer = usersService.getUsers(request.getNickname());
+        Users writer = usersService.getUsersByNickname(request.getNickname());
         Article article = ArticleConverter.toArticle(request.getContent(), writer);
 
         // ArticleTag에 target User 추가

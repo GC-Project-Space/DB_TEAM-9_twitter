@@ -28,4 +28,16 @@ public class UsersResponseConverter {
                 .message(user.getNickname() + "님 비밀번호 변경에 성공하였습니다.")
                 .build();
     }
+
+    public static UsersResponse.UserProfileDto toProfileDto(Users user) {
+        return UsersResponse.UserProfileDto.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .nickname(user.getNickname())
+                .profileImage(user.getProfileImage())
+                .coverImage(user.getCoverImage())
+                .bio(user.getBio())
+                .birth(user.getBrith())
+                .build();
+    }
 }

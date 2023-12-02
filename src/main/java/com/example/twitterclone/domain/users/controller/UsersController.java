@@ -73,4 +73,21 @@ public class UsersController {
         Users user = usersService.changePassword(request);
         return ApiResponse.onSuccess(UsersResponseConverter.toChangePasswordDto(user));
     }
+
+    /**
+     * 회원정보 조회
+     *
+     * @method GET
+     * @url /users/profile
+     * @param email: String
+     * @return ApiResponse<UsersResponse.UserProfileDto>
+     */
+    @Operation(summary = "회원정보 조회", description = "회원정보 조회 API")
+    @GetMapping("/profile")
+    public ApiResponse<UsersResponse.UserProfileDto> profile (
+            @RequestParam(name = "email") String email
+    ) {
+        Users user = usersService.getUsersByEmail(email);
+        return ApiResponse.onSuccess(UsersResponseConverter.toProfileDto(user));
+    }
 }

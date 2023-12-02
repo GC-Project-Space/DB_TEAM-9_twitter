@@ -3,10 +3,8 @@ package com.example.twitterclone.domain.comment.service;
 import com.example.twitterclone.domain.article.domain.Article;
 import com.example.twitterclone.domain.article.service.ArticleService;
 import com.example.twitterclone.domain.comment.converter.CommentConverter;
-import com.example.twitterclone.domain.comment.converter.CommentResponseConverter;
 import com.example.twitterclone.domain.comment.domain.Comment;
 import com.example.twitterclone.domain.comment.dto.CommentRequest;
-import com.example.twitterclone.domain.comment.dto.CommentResponse;
 import com.example.twitterclone.domain.comment.repository.CommentReadRepository;
 import com.example.twitterclone.domain.comment.repository.CommentWriteRepository;
 import com.example.twitterclone.domain.users.domain.Users;
@@ -29,7 +27,7 @@ public class CommentService {
     private final ArticleService articleService;
 
     public Comment create(CommentRequest.CreateDto createDto) {
-        Users user = usersService.getUsers(createDto.getUser_id());
+        Users user = usersService.getUsersById(createDto.getUser_id());
         Article article = articleService.getArticle(createDto.getArticle_id());
         return CommentConverter.toComment(createDto.getContent(), article, user);
     }
